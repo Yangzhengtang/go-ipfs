@@ -14,10 +14,10 @@ Interfaces here aren't yet completely stable.
 package coreapi
 
 import (
-	recovery "FEC"
 	"context"
 	"errors"
 	"fmt"
+	recovery "github.com/Yangzhengtang/FEC"
 
 	bserv "github.com/ipfs/go-blockservice"
 	"github.com/ipfs/go-fetcher"

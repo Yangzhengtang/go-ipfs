@@ -8,8 +8,8 @@ import (
 	"github.com/ipfs/go-merkledag"
 	"github.com/ipld/go-ipld-prime"
 
-	recovery "FEC"
-	"FEC/reedsolomon"
+	recovery "github.com/Yangzhengtang/FEC"
+	"github.com/Yangzhengtang/FEC/reedsolomon"
 	"github.com/ipfs/go-cid"
 	"github.com/ipfs/go-datastore"
 	"github.com/ipfs/go-fetcher"

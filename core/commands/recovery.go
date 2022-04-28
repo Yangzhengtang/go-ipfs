@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io"
 
-	recovery "FEC"
-	"FEC/reedsolomon"
+	recovery "github.com/Yangzhengtang/FEC"
+	"github.com/Yangzhengtang/FEC/reedsolomon"
 	"github.com/ipfs/go-cid"
 	cmds "github.com/ipfs/go-ipfs-cmds"
 	"github.com/ipfs/interface-go-ipfs-core/options"

@@ -14,7 +14,7 @@ import (
 	"github.com/ipfs/go-filestore"
 	"io"
 
-	recovery "FEC"
+	recovery "github.com/Yangzhengtang/FEC"
 	"github.com/ipfs/go-ipfs-pinner"
 
 	bserv "github.com/ipfs/go-blockservice"

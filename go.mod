@@ -1,7 +1,7 @@
 module github.com/ipfs/go-ipfs
 
 require (
-	FEC v1.0.0
+	github.com/Yangzhengtang/FEC v1.0.0
 	bazil.org/fuse v0.0.0-20200117225306-7b5117fecadc
 	contrib.go.opencensus.io/exporter/prometheus v0.4.0
 	github.com/blang/semver/v4 v4.0.0
@@ -112,7 +112,5 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20211025112917-711f33c9992c
 )
-
-replace FEC v1.0.0 => "/Users/zhengtang/Documents/Study/22Spring/AOS_Project/go-ipfs-recovery"
 
 go 1.16
