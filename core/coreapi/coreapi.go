@@ -14,6 +14,7 @@ Interfaces here aren't yet completely stable.
 package coreapi
 
 import (
+	recovery "FEC"
 	"context"
 	"errors"
 	"fmt"
@@ -58,6 +59,7 @@ type CoreAPI struct {
 
 	blocks               bserv.BlockService
 	dag                  ipld.DAGService
+	recovery             recovery.Recoverer
 	ipldFetcherFactory   fetcher.Factory
 	unixFSFetcherFactory fetcher.Factory
 	peerstore            pstore.Peerstore
@@ -171,6 +173,7 @@ func (api *CoreAPI) WithOptions(opts ...options.ApiOption) (coreiface.CoreAPI, e
 
 		blocks:               n.Blocks,
 		dag:                  n.DAG,
+		recovery:             n.Recovery,
 		ipldFetcherFactory:   n.IPLDFetcherFactory,
 		unixFSFetcherFactory: n.UnixFSFetcherFactory,
 
@@ -250,7 +253,8 @@ func (api *CoreAPI) getSession(ctx context.Context) *CoreAPI {
 
 	// TODO: We could also apply this to api.blocks, and compose into writable api,
 	// but this requires some changes in blockservice/merkledag
-	sesApi.dag = dag.NewReadOnlyDagService(dag.NewSession(ctx, api.dag))
+	ses := recovery.NewDagSession(ctx, api.recovery, api.exchange, api.blockstore)
+	sesApi.dag = dag.NewReadOnlyDagService(ses)
 
 	return &sesApi
 }

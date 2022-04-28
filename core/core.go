@@ -11,9 +11,10 @@ package core
 
 import (
 	"context"
+	"github.com/ipfs/go-filestore"
 	"io"
 
-	"github.com/ipfs/go-filestore"
+	recovery "FEC"
 	"github.com/ipfs/go-ipfs-pinner"
 
 	bserv "github.com/ipfs/go-blockservice"
@@ -83,6 +84,7 @@ type IpfsNode struct {
 	Discovery            mdns.Service              `optional:"true"`
 	FilesRoot            *mfs.Root
 	RecordValidator      record.Validator
+	Recovery             recovery.Recoverer
 
 	// Online
 	PeerHost      p2phost.Host            `optional:"true"` // the network host (server+client)

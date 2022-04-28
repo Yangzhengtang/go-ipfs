@@ -3,24 +3,26 @@ package node
 import (
 	"context"
 	"fmt"
-
 	"github.com/ipfs/go-blockservice"
+	"github.com/ipfs/go-filestore"
+	"github.com/ipfs/go-merkledag"
+	"github.com/ipld/go-ipld-prime"
+
+	recovery "FEC"
+	"FEC/reedsolomon"
 	"github.com/ipfs/go-cid"
 	"github.com/ipfs/go-datastore"
 	"github.com/ipfs/go-fetcher"
 	bsfetcher "github.com/ipfs/go-fetcher/impl/blockservice"
-	"github.com/ipfs/go-filestore"
 	blockstore "github.com/ipfs/go-ipfs-blockstore"
 	exchange "github.com/ipfs/go-ipfs-exchange-interface"
 	pin "github.com/ipfs/go-ipfs-pinner"
 	"github.com/ipfs/go-ipfs-pinner/dspinner"
 	format "github.com/ipfs/go-ipld-format"
-	"github.com/ipfs/go-merkledag"
 	"github.com/ipfs/go-mfs"
 	"github.com/ipfs/go-unixfs"
 	"github.com/ipfs/go-unixfsnode"
 	dagpb "github.com/ipld/go-codec-dagpb"
-	"github.com/ipld/go-ipld-prime"
 	basicnode "github.com/ipld/go-ipld-prime/node/basic"
 	"github.com/ipld/go-ipld-prime/schema"
 	"go.uber.org/fx"
@@ -167,4 +169,8 @@ func Files(mctx helpers.MetricsCtx, lc fx.Lifecycle, repo repo.Repo, dag format.
 	})
 
 	return root, err
+}
+
+func Recovery(mctx helpers.MetricsCtx, lc fx.Lifecycle, dag format.DAGService) recovery.Recoverer {
+	return reedsolomon.NewRecoverer(helpers.LifecycleCtx(mctx, lc), dag, recovery.All) // TODO Implementation agnostic
 }

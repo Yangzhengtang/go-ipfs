@@ -155,6 +155,7 @@ var rootSubcommands = map[string]*cmds.Command{
 	"shutdown":  daemonShutdownCmd,
 	"cid":       CidCmd,
 	"multibase": MbaseCmd,
+	"recovery":  RecoveryCmd,
 }
 
 // RootRO is the readonly version of Root

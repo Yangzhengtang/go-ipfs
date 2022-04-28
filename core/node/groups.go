@@ -317,6 +317,7 @@ var Core = fx.Options(
 	fx.Provide(FetcherConfig),
 	fx.Provide(Pinning),
 	fx.Provide(Files),
+	fx.Provide(Recovery),
 )
 
 func Networked(bcfg *BuildCfg, cfg *config.Config) fx.Option {
