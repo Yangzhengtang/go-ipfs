@@ -1,6 +1,7 @@
 module github.com/ipfs/go-ipfs
 
 require (
+	FEC v1.0.0
 	bazil.org/fuse v0.0.0-20200117225306-7b5117fecadc
 	contrib.go.opencensus.io/exporter/prometheus v0.4.0
 	github.com/blang/semver/v4 v4.0.0
@@ -89,6 +90,7 @@ require (
 	github.com/libp2p/go-socket-activation v0.1.0
 	github.com/libp2p/go-tcp-transport v0.4.0
 	github.com/libp2p/go-ws-transport v0.5.0
+	github.com/lucas-clemente/quic-go v0.26.0 // indirect
 	github.com/miekg/dns v1.1.43
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/multiformats/go-multiaddr v0.4.1
@@ -110,5 +112,7 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20211025112917-711f33c9992c
 )
+
+replace FEC v1.0.0 => "/Users/zhengtang/Documents/Study/22Spring/AOS_Project/go-ipfs-recovery"
 
 go 1.16
